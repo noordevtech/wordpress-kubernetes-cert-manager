@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: dev-wowimpression-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  tls:
+  - hosts: 
+    - dev.wowimpression.cloud
+    secretName: letsencrypt-prod-wowimpression
+  rules:
+  - host: dev.wowimpression.cloud 
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: wordpress-lb
+          servicePort: 80
