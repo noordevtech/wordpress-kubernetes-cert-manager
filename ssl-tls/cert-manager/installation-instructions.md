@@ -10,3 +10,5 @@ kubectl apply -f cert1.yml
 kubectl get all --namespace hotel
 kubectl get certificate -n hotel
 kubectl describe certificate -n hotel
+
+##pr
